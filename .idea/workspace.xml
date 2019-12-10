@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7236fb4d-6774-4477-9505-50ce62a1cfd0" name="Default Changelist" comment="" />
+    <list default="true" id="7236fb4d-6774-4477-9505-50ce62a1cfd0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,8 +14,17 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="charlesBranch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php-7.1.33" />
   <component name="ProjectId" id="1UlTDaAisNmoX1UKwCSkR1ASSO7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -21,6 +32,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -47,7 +59,8 @@
       <option name="presentableId" value="Default" />
       <updated>1575930063680</updated>
       <workItem from="1575930068769" duration="387000" />
-      <workItem from="1575980403393" duration="16000" />
+      <workItem from="1575980403393" duration="342000" />
+      <workItem from="1575980748221" duration="186000" />
     </task>
     <servers />
   </component>
@@ -59,9 +72,17 @@
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="612" y="113" key="#PHP/0.23.1920.977@0.23.1920.977" timestamp="1575930117019" />
+    <state x="322" y="155" width="1200" height="737" key="DiffContextDialog" timestamp="1575981180344">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="322" y="155" width="1200" height="737" key="DiffContextDialog/0.23.1920.977@0.23.1920.977" timestamp="1575981180344" />
     <state x="431" y="162" key="SettingsEditor" timestamp="1575930343955">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="431" y="162" key="SettingsEditor/0.23.1920.977@0.23.1920.977" timestamp="1575930343955" />
+    <state x="726" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575981178380">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="726" y="448" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1920.977@0.23.1920.977" timestamp="1575981178380" />
   </component>
 </project>
