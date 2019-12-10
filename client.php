@@ -9,7 +9,7 @@
 
 $location = $_POST['location'];
 $time = $_POST['time'];
-1234
+
 echo "You are in " . $location . ". You have " . $time . " minutes.";
 
 
