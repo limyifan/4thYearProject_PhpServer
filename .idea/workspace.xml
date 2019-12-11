@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7236fb4d-6774-4477-9505-50ce62a1cfd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nbproject/database.php" afterDir="false" />
+    <list default="true" id="7236fb4d-6774-4477-9505-50ce62a1cfd0" name="Default Changelist" comment="added user php object inside User.php">
+      <change afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.php" beforeDir="false" afterPath="$PROJECT_DIR$/client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +24,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php-7.1.33" />
   <component name="ProjectId" id="1UlTDaAisNmoX1UKwCSkR1ASSO7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -36,6 +36,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="C:/xampp/php/php.exe" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -61,6 +66,8 @@
       <updated>1575930063680</updated>
       <workItem from="1575930068769" duration="387000" />
       <workItem from="1575980403393" duration="16000" />
+      <workItem from="1576061059109" duration="1093000" />
+      <workItem from="1576068791273" duration="2841000" />
     </task>
     <task id="LOCAL-00001" summary="added 1234 for testing">
       <created>1575984333124</created>
@@ -78,37 +85,51 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="latest update on 12Dec" />
     <MESSAGE value="added 1234 for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="added 1234 for testing" />
+    <MESSAGE value="added user php object inside User.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="added user php object inside User.php" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="347" y="87" key="#CLI_Interpreters" timestamp="1575985085877">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="434" y="126" key="#CLI_Interpreters" timestamp="1575992225986">
+      <screen x="0" y="23" width="1920" height="978" />
     </state>
     <state x="347" y="87" key="#CLI_Interpreters/0.0.1536.824@0.0.1536.824" timestamp="1575985085877" />
-    <state x="490" y="35" key="#PHP" timestamp="1575985089124">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="434" y="126" key="#CLI_Interpreters/0.23.1920.978@0.23.1920.978" timestamp="1575992225986" />
+    <state x="612" y="113" key="#PHP" timestamp="1576061297385">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="490" y="35" key="#PHP/0.0.1536.824@0.0.1536.824" timestamp="1575985089124" />
-    <state x="612" y="113" key="#PHP/0.23.1920.977@0.23.1920.977" timestamp="1575930117019" />
-    <state x="406" y="11" key="CommitChangelistDialog2" timestamp="1575984331685">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="612" y="113" key="#PHP/0.23.1920.977@0.23.1920.977" timestamp="1576061297385" />
+    <state x="508" y="36" key="CommitChangelistDialog2" timestamp="1576074508533">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="406" y="11" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1575984331685" />
+    <state x="508" y="36" key="CommitChangelistDialog2/0.23.1920.977@0.23.1920.977" timestamp="1576074508533" />
     <state x="547" y="187" key="FileChooserDialogImpl" timestamp="1575985082604">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="547" y="187" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1575985082604" />
-    <state x="604" y="343" key="NewPhpFileDialog" timestamp="1575984813268">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="604" y="343" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1575984813268" />
-    <state x="431" y="162" key="SettingsEditor" timestamp="1575930343955">
+    <state x="755" y="430" key="NewPhpFileDialog" timestamp="1576069564153">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
+    <state x="604" y="343" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1575984813268" />
+    <state x="755" y="430" key="NewPhpFileDialog/0.23.1920.977@0.23.1920.977" timestamp="1576069564153" />
+    <state x="431" y="162" key="SettingsEditor" timestamp="1575993616279">
+      <screen x="0" y="23" width="1920" height="978" />
+    </state>
     <state x="431" y="162" key="SettingsEditor/0.23.1920.977@0.23.1920.977" timestamp="1575930343955" />
+    <state x="431" y="162" key="SettingsEditor/0.23.1920.978@0.23.1920.978" timestamp="1575993616279" />
     <state x="361" y="136" key="Vcs.Push.Dialog.v2" timestamp="1575984336028">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="136" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1575984336028" />
+    <state x="100" y="123" width="1720" height="776" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1575994063995">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="100" y="123" width="1720" height="776" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.23.1920.977@0.23.1920.977" timestamp="1575994063995" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1576003134408">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.23.1920.977@0.23.1920.977" timestamp="1576003134408" />
+    <state width="600" height="424" key="javadoc.popup/0.23.1920.978@0.23.1920.978" timestamp="1575992348832" />
   </component>
 </project>
