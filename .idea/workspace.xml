@@ -3,13 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7236fb4d-6774-4477-9505-50ce62a1cfd0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getPlaceType.php" beforeDir="false" afterPath="$PROJECT_DIR$/getPlaceType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getPreference.php" beforeDir="false" afterPath="$PROJECT_DIR$/getPreference.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/getUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/read.php" beforeDir="false" afterPath="$PROJECT_DIR$/read.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
