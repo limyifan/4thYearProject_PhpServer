@@ -22,7 +22,7 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
-- script: composer install --no-interaction --prefer-dist
+- script: php composer.phar require --dev phpunit/phpunit ^8.5
   displayName: 'composer install'
 - task: ArchiveFiles@2
   inputs:
