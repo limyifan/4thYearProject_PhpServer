@@ -83,7 +83,11 @@ final class TestRunner extends BaseTestRunner
     private $loader;
 
     /**
+<<<<<<< Updated upstream
      * @var Printer&TestListener
+=======
+     * @var ResultPrinter
+>>>>>>> Stashed changes
      */
     private $printer;
 
@@ -269,11 +273,19 @@ final class TestRunner extends BaseTestRunner
 
         if ($this->printer === null) {
             if (isset($arguments['printer'])) {
+<<<<<<< Updated upstream
                 if ($arguments['printer'] instanceof Printer && $arguments['printer'] instanceof TestListener) {
                     $this->printer = $arguments['printer'];
                 } elseif (\is_string($arguments['printer']) && \class_exists($arguments['printer'], false)) {
                     try {
                         new \ReflectionClass($arguments['printer']);
+=======
+                if ($arguments['printer'] instanceof Printer) {
+                    $this->printer = $arguments['printer'];
+                } elseif (\is_string($arguments['printer']) && \class_exists($arguments['printer'], false)) {
+                    try {
+                        $class = new \ReflectionClass($arguments['printer']);
+>>>>>>> Stashed changes
                         // @codeCoverageIgnoreStart
                     } catch (\ReflectionException $e) {
                         throw new Exception(
@@ -284,7 +296,11 @@ final class TestRunner extends BaseTestRunner
                     }
                     // @codeCoverageIgnoreEnd
 
+<<<<<<< Updated upstream
                     if (\is_subclass_of($arguments['printer'], ResultPrinter::class)) {
+=======
+                    if ($class->isSubclassOf(ResultPrinter::class)) {
+>>>>>>> Stashed changes
                         $this->printer = $this->createPrinter($arguments['printer'], $arguments);
                     }
                 }
@@ -1303,6 +1319,7 @@ final class TestRunner extends BaseTestRunner
         $this->messagePrinted = true;
     }
 
+<<<<<<< Updated upstream
     /**
      * @template T as Printer
      *
@@ -1310,6 +1327,8 @@ final class TestRunner extends BaseTestRunner
      *
      * @return T
      */
+=======
+>>>>>>> Stashed changes
     private function createPrinter(string $class, array $arguments): Printer
     {
         return new $class(

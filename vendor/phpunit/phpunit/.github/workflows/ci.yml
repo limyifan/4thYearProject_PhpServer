@@ -14,7 +14,11 @@ jobs:
 
     steps:
       - name: Checkout
+<<<<<<< Updated upstream
         uses: actions/checkout@v2
+=======
+        uses: actions/checkout@master
+>>>>>>> Stashed changes
 
       - name: Run friendsofphp/php-cs-fixer
         run: php7.3 ./tools/php-cs-fixer fix --diff-format=udiff --dry-run --show-progress=dots --using-cache=no --verbose
@@ -26,7 +30,11 @@ jobs:
 
     steps:
       - name: Checkout
+<<<<<<< Updated upstream
         uses: actions/checkout@v1
+=======
+        uses: actions/checkout@master
+>>>>>>> Stashed changes
 
       - name: Update dependencies with composer
         run: php7.3 ./tools/composer update --no-interaction --no-ansi --no-progress --no-suggest
@@ -44,6 +52,7 @@ jobs:
 
     steps:
       - name: Checkout
+<<<<<<< Updated upstream
         uses: actions/checkout@v1
         with:
           fetch-depth: 0
@@ -57,6 +66,19 @@ jobs:
 
       - name: Run roave/backward-compatibility-check
         run: php ./tools/roave-backward-compatibility-check --from=8.5.0
+=======
+        uses: actions/checkout@master
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.3
+          coverage: none
+          extension-csv: intl
+
+      - name: Run roave/backward-compatibility-check
+        run: php ./tools/roave-backward-compatibility-check --from=42afe2b8b42077b26148272bd03da4ab6e46a072
+>>>>>>> Stashed changes
 
   lint-xml-configuration:
     name: Lint XML Configuration
@@ -65,7 +87,11 @@ jobs:
 
     steps:
       - name: Checkout
+<<<<<<< Updated upstream
         uses: actions/checkout@v2
+=======
+        uses: actions/checkout@master
+>>>>>>> Stashed changes
 
       - name: Build Docker image
         uses: ./.docker/lint-xml-configuration
@@ -93,6 +119,7 @@ jobs:
 
     steps:
       - name: Checkout
+<<<<<<< Updated upstream
         uses: actions/checkout@v2
 
       - name: "Install PHP with extensions"
@@ -102,6 +129,17 @@ jobs:
           coverage: pcov
           extensions: dom, json, libxml, mbstring, pdo_sqlite, soap, xml, xmlwriter
           ini-values: assert.exception=1, zend.assertions=1
+=======
+        uses: actions/checkout@master
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: xdebug
+          extension-csv: dom, json, libxml, mbstring, pdo_sqlite, soap, xml, xmlwriter
+          ini-values-csv: assert.exception=1, zend.assertions=1
+>>>>>>> Stashed changes
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v1

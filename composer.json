@@ -1,5 +1,9 @@
 {
     "require-dev": {
+<<<<<<< Updated upstream
         "phpunit/phpunit": "^8.5"
+=======
+        "phpunit/phpunit": "8.5"
+>>>>>>> Stashed changes
     }
 }
