@@ -22,5 +22,5 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
-- script: phpunit PlaceTest_1.php
+- script: phpunit PlaceTest.php
   displayName: 'composer install'
