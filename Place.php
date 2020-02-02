@@ -2,57 +2,42 @@
 
 class Place{
    
-    public function __construct($place_id, $place_name,$rating, $latitude, $longitude,  $icon, $open, $price_level){
+    public $place_id;
+    public $place_name;
+    public $place_type;
+    public $rating;
+    public $latitude;
+    public $longitude;
+    public $icon;
+    public $open;
+    public $cover_image;
+
+
+    public function __construct($place_id, $place_name,$place_type,$rating, $latitude, $longitude, $icon, $open, $cover_image){
         $this->place_id = $place_id;
         $this->place_name = $place_name;
+        $this->place_type = $place_type;
         $this->rating = $rating;
         $this->latitude = $latitude;
         $this->longitude = $longitude;
         $this->icon = $icon;
         $this->open = $open;
-        $this->price_level = $price_level;
+        //$this->price_level = $price_level;
+        $this->cover_image = $cover_image;
     }
-
-
     
-    //public function __construct($place_id, $place_name,$rating,$latitude, $longitude, $icon, $open, $price_level, array $types){
-    //    $this->place_id = $place_id;
-    //    $this->place_name = $place_name;
-    //    $this->rating = $rating;
-    //    $this->latitude = $latitude;
-    //    $this->longitude = $longitude;
-    //    $icon->icon = $icon;
-    //    $open->open = $open;
-    //    $price_level->price_level = $price_level;
-    //    $types[] = array();
-    //}
-    
+    function getName(){
+        return $this->place_name;
+    }
 
     public function printPlace(){
-        echo "<br>== PLACE == <br>";
-        echo $this->place_name . "<br>";
-        echo $this->rating . "<br>";
-        echo $this->place_id . "<br>";
-        echo $this->latitude . "<br>";
-        echo $this->longitude . "<br>";
-        echo $this->icon . "<br>";
-        echo $this->checkOpen() . "<br>";
-        echo $this->checkPriceLevel() . "<br>";
+        echo "<br>" . $this->place_name . "\t" . $this->rating  . "\t <a>" . $this->cover_image . "</a>";
     }
     
-    private function checkOpen(){
-        if($this->open == '1'){
-            echo "Open";
-        }
-        
+    public function setCoverImage(&$photo_reference){
+        $this->cover_image = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=". $photo_reference ."&key=" . $_SESSION["PLACES_API_KEY"];
     }
-    
-    private function checkPriceLevel(){
-        if($this->price_level == '1'){
-            echo "Cheap";
-        }
-        
-    }
+
 
 
 }
