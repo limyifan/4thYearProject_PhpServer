@@ -67,10 +67,17 @@ EOF
 
     public function testConstraintArrayHasKey0(): void
     {
+<<<<<<< Updated upstream
         $constraint = new ArrayHasKey(0);
 
         try {
             $constraint->evaluate(0, '');
+=======
+        $contraint = new ArrayHasKey(0);
+
+        try {
+            $contraint->evaluate(0, '');
+>>>>>>> Stashed changes
         } catch (ExpectationFailedException  $e) {
             $this->assertEquals(
                 <<<EOF

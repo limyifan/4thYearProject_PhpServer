@@ -1718,10 +1718,15 @@
       <workItem from="1575930068769" duration="387000" />
       <workItem from="1575980403393" duration="16000" />
       <workItem from="1576061059109" duration="1093000" />
+<<<<<<< Updated upstream
       <workItem from="1576068791273" duration="3414000" />
       <workItem from="1576598579180" duration="6924000" />
       <workItem from="1576676077848" duration="4181000" />
       <workItem from="1580051912927" duration="509000" />
+=======
+      <workItem from="1576068791273" duration="2841000" />
+      <workItem from="1580470315651" duration="161000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="added 1234 for testing">
       <created>1575984333124</created>

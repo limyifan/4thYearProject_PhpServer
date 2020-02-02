@@ -2,7 +2,11 @@
 \PHPUnit\Framework\MockObject\Generator::generateClassFromWsdl('3530.wsdl', 'Test')
 --SKIPIF--
 <?php declare(strict_types=1);
+<<<<<<< Updated upstream
 if (!extension_loaded('soap')) echo 'skip: Extension soap is required';
+=======
+if (!extension_loaded('soap')) echo 'skip: SOAP extension is required';
+>>>>>>> Stashed changes
 --FILE--
 <?php declare(strict_types=1);
 require __DIR__ . '/../../../../vendor/autoload.php';

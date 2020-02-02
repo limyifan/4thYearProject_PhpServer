@@ -783,8 +783,12 @@ class Command
         if (isset($this->options[1][0]) &&
             \substr($this->options[1][0], -5, 5) !== '.phpt' &&
             \substr($this->options[1][0], -4, 4) !== '.php' &&
+<<<<<<< Updated upstream
             \substr($this->options[1][0], -1, 1) !== '/' &&
             !\is_dir($this->options[1][0])) {
+=======
+            \substr($this->options[1][0], -1, 1) !== '/') {
+>>>>>>> Stashed changes
             $this->arguments['warnings'][] = 'Invocation with class name is deprecated';
         }
 
