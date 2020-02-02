@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="vendor/autoload.php">
+    colors="true"
+    verbose="true"
+    stopOnFailure=true
+<testsuites>
+    <testsuite name="unit">
+        <directory>
+            tests
+        </directory>
+    </testsuite>
+</testsuites>
+   <whitelist>
+            <directory>../src</directory>
+            <exclude>
+                <directory>../src/*Bundle/Resources</directory>
+                <directory>../src/*Bundle/Tests</directory>
+                <directory>../src/*/*Bundle/Resources</directory>
+                <directory>../src/*/*Bundle/Tests</directory>
+                <directory>../src/*/Bundle/*Bundle/Resources</directory>
+                <directory>../src/*/Bundle/*Bundle/Tests</directory>
+            </exclude>
+        </whitelist>
+</phpunit>

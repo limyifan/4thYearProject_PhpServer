@@ -18,7 +18,7 @@ $user = new User($db);
 $user->id = isset($_GET['id']) ? $_GET['id'] : die();
 
 // read the details of product to be edited
-$user->getPreferences();
+$user->getPreference();
 
 if($user->preference!=null){
     // set response code - 200 OK
