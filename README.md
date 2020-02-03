@@ -15,7 +15,7 @@ A sample of the response my server will give;
 https://201.team/api/randomroute/getroute.php/?lat=54.004160&lng=-6.402970&pref1=Food&pref2=Sport&pref3=Entertainment
 
 
-
+```
 {
     "PlaceObject": [
         {
@@ -42,3 +42,4 @@ https://201.team/api/randomroute/getroute.php/?lat=54.004160&lng=-6.402970&pref1
         }
     ]
 }
+```
