@@ -111,9 +111,7 @@ class Place{
     }
 
     
-    
-    
-    
+
     public function printPlace(){
         echo "<br>" . $this->place_name . "\t" . $this->rating  . "\t <a>" . $this->cover_image . "</a>";
     }

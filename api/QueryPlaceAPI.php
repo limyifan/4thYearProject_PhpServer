@@ -49,7 +49,7 @@ function parseAPIResult(&$placesArray, &$api_result){
      
           
       
-        for($i = 0; $i < 1; $i++){     
+        for($i = 0; $i < 4; $i++){     
 
             //Validating JSON Object to ensure all fields are present.
             
