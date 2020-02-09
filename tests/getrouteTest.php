@@ -4,11 +4,11 @@ require_once '../api/RandomRoute/getroute.php';
 
 class PlaceTest extends PHPUnit_Framework_TestCase {
 
-    public function testExpectFooActualFoo() {
+    public function testPlaceName() {
         //require 'Place.php';
-        $place = new Place(1, "name", 3, 23, 25, "", "open", "price_level");
+        $place = new Place(1, "name","musuem", 3, 23, 25, "", "open", "price_level");
         $place->latitude = 23;
-       $this->assertEqual($place->getName(),"name");
+       $this->assertSame($place->getName(),"name");
     }
 
 }

@@ -699,7 +699,6 @@
     },
     {
         "name": "phpunit/phpunit",
-
         "version": "8.5.2",
         "version_normalized": "8.5.2.0",
         "source": {
@@ -711,7 +710,6 @@
             "type": "zip",
             "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
             "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
-
             "shasum": ""
         },
         "require": {
@@ -749,9 +747,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^2.0.0"
         },
-
         "time": "2020-01-08T08:49:49+00:00",
-
         "bin": [
             "phpunit"
         ],
