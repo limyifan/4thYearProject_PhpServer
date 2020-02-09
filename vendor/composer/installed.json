@@ -699,7 +699,6 @@
     },
     {
         "name": "phpunit/phpunit",
-<<<<<<< Updated upstream
         "version": "8.5.2",
         "version_normalized": "8.5.2.0",
         "source": {
@@ -711,19 +710,6 @@
             "type": "zip",
             "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
             "reference": "018b6ac3c8ab20916db85fa91bf6465acb64d1e0",
-=======
-        "version": "8.5.0",
-        "version_normalized": "8.5.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/sebastianbergmann/phpunit.git",
-            "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
-            "reference": "3ee1c1fd6fc264480c25b6fb8285edefe1702dab",
->>>>>>> Stashed changes
             "shasum": ""
         },
         "require": {
@@ -761,11 +747,7 @@
             "ext-xdebug": "*",
             "phpunit/php-invoker": "^2.0.0"
         },
-<<<<<<< Updated upstream
         "time": "2020-01-08T08:49:49+00:00",
-=======
-        "time": "2019-12-06T05:41:38+00:00",
->>>>>>> Stashed changes
         "bin": [
             "phpunit"
         ],
