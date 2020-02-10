@@ -146,7 +146,7 @@ function parseAPIResult(&$placesArray, &$api_result){
                 $open = "No Hours Provided";
             }
             
-            $average_time = 20;
+            $average_time = 30;
             
             if($place_id == "null"){
                //skip place 

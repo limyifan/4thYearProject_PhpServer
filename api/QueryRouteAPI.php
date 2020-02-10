@@ -1,16 +1,17 @@
 <?php
 
-$place_1 = "ChIJ10mXAqfOYEgRLNAFN0GWq40";
-$place_2 = "ChIJ3RBQHRvMYEgR07h8K4GxuYA";
+//$place_1 = "ChIJ10mXAqfOYEgRLNAFN0GWq40";
+//$place_2 = "ChIJ3RBQHRvMYEgR07h8K4GxuYA";
 
 
+include_once '../Credentials.php';
 
 function getDistanceLatLng(&$lat1, &$lng1, &$lat2, &$lng2){
     
     //mode of transport hard coded to walking in request
     //api hard coded to reuqest 
     
-    $URL = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $lat1 . "," . $lng1 .  "&destination=" . $lat2 . "," . $lng2 . "&mode=walking&key=" . $_SESSION["PLACES_API_KEY"];
+        $URL = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $lat1 . "," . $lng1 .  "&destination=" . $lat2 . "," . $lng2 . "&mode=walking&key=" . $_SESSION["PLACES_API_KEY"];
     
     
     $APIresult = file_get_contents($URL);
@@ -26,7 +27,7 @@ function getDistanceLatLng(&$lat1, &$lng1, &$lat2, &$lng2){
             return stringToInt($time);
         }  
         else{
-            echo "No Time";
+            echo "Time Unknown";
         }
     
     }

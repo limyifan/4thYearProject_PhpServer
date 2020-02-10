@@ -33,6 +33,7 @@ echo "<br>Time: " . $time . " mins";
 include_once '../Credentials.php';
 include_once '../Place.php';
 include_once '../Categories.php';
+include_once './GetTime.php';
 
 
 
@@ -55,9 +56,6 @@ include '../QueryPlaceAPI.php';
 
 
 
-echo "<br><br><br><br><br><br>";
-
-
 $food = false;
 $timeFilled = false;
 
@@ -78,9 +76,18 @@ $initialTime = getDistanceLatLng($lat, $lng, $firstLocationLat, $firstLocationLn
 $estimatedTotalTime = 0 + $initialTime;
 
 
+$jsonArray = array();
 
+function cmp($a, $b){
+    return strcmp($b->rating, $a->rating);
+}
+
+//usort($placesArray, "cmp");
+
+
+$foodCount = 0;
 while (!$timeFilled) {
-        
+      
      //working on time here
      //need to set starting location
      //get disctance to first activity
@@ -88,17 +95,30 @@ while (!$timeFilled) {
      //go through placesArray and add to new list if time to travelX & complete + time of previous is less than user given time
      //to get travelX use the location of the previous activty and the next activity in list
      //if time is to great skip this activity until you find one that adds up to less < user given time
+$travelMode = "Walking";
 
         $summaryTime = 0;
-        for ($i = 0; $i < 15; $i ++) {
+        for ($i = 0; $i < count($placesArray); $i ++) {
             
             if($summaryTime < $time){
+                
+                if($placesArray[$i]->place_type == "restauraunt" || $placesArray[$i]->place_type  == "cafe"){
+                    $foodCount ++;
+                }
+            
+                
           //echo "Getting: " . $placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude . "<br>";
-            $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude);
-            $placeAverageTime = $placesArray[$i]->average_time;
+            
+                $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude);
+                $placeAverageTime = $placesArray[$i]->average_time;
+                
+                array_push($jsonArray, $placesArray[$i]);
+                array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude));
+                
             $tempTime = $walkingAverageTime + $placeAverageTime;
             $summaryTime = $tempTime + $summaryTime;
-            echo $tempTime . "  ". $summaryTime ."<br>";
+            //echo "Time to walk: " . $walkingAverageTime . "     Avg time at place: " . $placeAverageTime . "          \tTime Elapsed: " . $summaryTime . "<br>";
+            //echo $tempTime . "  ". $summaryTime ."<br>";
             }
             else{
                   $timeFilled = true;
@@ -106,15 +126,15 @@ while (!$timeFilled) {
 
 
         }
-        echo $summaryTime;
+        //echo $summaryTime;
       
     
 }
 
 
 
-//$master_array = array("PlaceObject"=>$placesArray);
-//echo "<pre>";  print_r($master_array); echo "</pre>";
-
+$master_array = array("PlaceObject"=>$placesArray);
+echo "<pre>";  print_r($jsonArray); echo "</pre>";
+//echo json_encode($master_array);
 
 

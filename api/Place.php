@@ -12,6 +12,7 @@ class Place{
     public $open;
     public $cover_image;
     public $average_time;//minutes
+    //public $walkingTimeToNextActivity;
 
     
     public function __construct($place_id, $place_name,$place_type,$rating, $latitude, $longitude, $icon, $open, $cover_image){
@@ -69,6 +70,8 @@ class Place{
     function getAverage_time() {
         return $this->average_time;
     }
+    
+
 
     function setPlace_id($place_id) {
         $this->place_id = $place_id;
@@ -110,11 +113,7 @@ class Place{
         $this->average_time = $average_time;
     }
 
-    
 
-    public function printPlace(){
-        echo "<br>" . $this->place_name . "\t" . $this->rating  . "\t <a>" . $this->cover_image . "</a>";
-    }
     
 
 
