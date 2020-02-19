@@ -19,7 +19,7 @@ $lat = "53.984883";
 echo "<br>currentLat: " . $lat;
 $lng = "-6.393903";
 echo "<br>currentLng: " . $lng;
-$pref1 = "Food";
+$pref1 = "Art_Culture";
 echo "<br>pref1: " . $pref1;
 $pref2 = "History";
 echo "<br>pref2: " . $pref2;
@@ -85,56 +85,98 @@ function cmp($a, $b){
 //usort($placesArray, "cmp");
 
 
+ //working on time here
+ //need to set starting location
+ //get disctance to first activity
+ //add activity & transit time up
+ //go through placesArray and add to new list if time to travelX & complete + time of previous is less than user given time
+ //to get travelX use the location of the previous activty and the next activity in list
+ //if time is to great skip this activity until you find one that adds up to less < user given time
+
+
 $foodCount = 0;
 while (!$timeFilled) {
       
-     //working on time here
-     //need to set starting location
-     //get disctance to first activity
-     //add activity & transit time up
-     //go through placesArray and add to new list if time to travelX & complete + time of previous is less than user given time
-     //to get travelX use the location of the previous activty and the next activity in list
-     //if time is to great skip this activity until you find one that adds up to less < user given time
+
 $travelMode = "Walking";
 
+        //current time of all activities and transport is 0 minutes
         $summaryTime = 0;
+        
+
+        //iterate through places array and filter to return to client
         for ($i = 0; $i < count($placesArray); $i ++) {
             
+            //while the total time is not longer than the user given time
             if($summaryTime < $time){
-                
-                if($placesArray[$i]->place_type == "restauraunt" || $placesArray[$i]->place_type  == "cafe"){
-                    $foodCount ++;
-                }
-            
-                
-          //echo "Getting: " . $placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude . "<br>";
-            
-                $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude);
-                $placeAverageTime = $placesArray[$i]->average_time;
-                
-                array_push($jsonArray, $placesArray[$i]);
-                array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i+1]->latitude, $placesArray[$i+1]->longitude));
-                
-            $tempTime = $walkingAverageTime + $placeAverageTime;
-            $summaryTime = $tempTime + $summaryTime;
-            //echo "Time to walk: " . $walkingAverageTime . "     Avg time at place: " . $placeAverageTime . "          \tTime Elapsed: " . $summaryTime . "<br>";
-            //echo $tempTime . "  ". $summaryTime ."<br>";
+                    
+                    //count number of food activities as they are added
+                    if($placesArray[$i]->place_type == "restauraunt" || $placesArray[$i]->place_type  == "cafe"){
+                        $foodCount ++;
+
+                    }
+                    
+                    
+                    if ($foodCount == 1) {
+                        $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude);
+                        $placeAverageTime = $placesArray[$i]->average_time;
+
+                        array_push($jsonArray, $placesArray[$i]);
+                        array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude));
+
+                        $tempTime = $walkingAverageTime + $placeAverageTime;
+                        $summaryTime = $tempTime + $summaryTime;
+                    }
+
+
+
             }
             else{
                   $timeFilled = true;
+                  
             }
 
         }
-        //echo $summaryTime;
+        echo $summaryTime;
 
 }
+
+checkTimeOverlap($summaryTime, $time);
+
+
+
+
+function checkTimeOverlap($calculatedTime, $userGivenTime) {
+    if ($calculatedTime > $userGivenTime) {
+        echo "\n<strong>WARNING</strong> - Time is overlapping by: ";
+        echo $calculatedTime - $userGivenTime . "\n";
+    } else {
+        echo "\nTime is OK\n";
+    }
+}
+
+function calculateTimeBetweenActivity(){
+    
+    
+}
+
+
+array_pop($jsonArray);
+
+checkTimeOverlap($summaryTime, $time);
 
 echo "<br>food places" . $foodCount;
 
 
 
-$master_array = array("PlaceObject"=>$placesArray);
-echo "<pre>";  print_r($jsonArray); echo "</pre>";
+
+
+
+
+
+
+$master_array = array("PlaceObject"=>$jsonArray);
+echo "<pre>";  print_r($master_array); echo "</pre>";
 //echo json_encode($master_array);
 
 
