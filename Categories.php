@@ -18,7 +18,7 @@ function assignCategory(&$preference1, &$preference2, &$preference3, &$fieldType
         }
         else if($pref == "History")
             {
-            $historyArray = array("History" => array("city_hall","courthouse","hindu_temple","mosque","museum","synagogue"));
+            $historyArray = array("History" => array("city_hall","courthouse","museum"));
             //"university"
             array_push($fieldTypes, $historyArray);
         }
@@ -49,7 +49,7 @@ function assignCategory(&$preference1, &$preference2, &$preference3, &$fieldType
         }
         else if($pref == "Arts_Culture")
             {
-            $arts_cultureArray =  array("Arts_Culture" => array("art_gallery","church","library"));
+            $arts_cultureArray =  array("Arts_Culture" => array("art_gallery","library"));
             //"university"
             array_push($fieldTypes, $arts_cultureArray);
         }
