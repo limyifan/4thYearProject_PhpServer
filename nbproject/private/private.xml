@@ -4,19 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/vendor/composer/autoload_static.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/PlaceTest.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/Place.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/User.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/vendor/bin/phpunit</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/read.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/composer.lock</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/vendor/composer/installed.json</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/composer.json</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/vendor/autoload.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/vendor/composer/autoload_real.php</file>
-            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/tests/PlaceTest.php</file>
+            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/api/Place.php</file>
             <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/api/RandomRoute/getroute.php</file>
+            <file>file:/C:/Users/lyfli/PhpstormProjects/4thYearProject_PhpServer/tests/getrouteTest.php</file>
         </group>
     </open-files>
 </project-private>
