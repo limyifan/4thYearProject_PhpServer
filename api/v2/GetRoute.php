@@ -124,12 +124,12 @@ $travelMode = "Walking";
                   $timeFilled = true;
             }
 
-
         }
         //echo $summaryTime;
-      
-    
+
 }
+
+echo "<br>food places" . $foodCount;
 
 
 
