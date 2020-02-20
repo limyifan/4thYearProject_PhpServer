@@ -25,7 +25,7 @@ $pref2 = "History";
 echo "<br>pref2: " . $pref2;
 $pref3 = "Entertainment";
 echo "<br>pref3: " . $pref3;
-$time = 60;
+$time = 120;
 echo "<br>Time: " . $time . " mins";
 
 
@@ -111,11 +111,13 @@ while (!$timeFilled) {
     //iterate through places array and filter to return to client
     for ($i = 0; $i < count($placesArray) - 1; $i ++) {
 
+
         //while the total time is not longer than the user given time
         if ($summaryTime < $time) {
 
 
-            if (!$placesArray[$i]->place_id == $_SESSION["places_blacklist"][0]) {
+            if (!checkBlackList($placesArray[$i]->place_id)) {
+
                 //count number of food activities as they are added
 
                 if ($placesArray[$i]->place_type == "restaurant" || $placesArray[$i]->place_type == "cafe") {
@@ -149,17 +151,17 @@ while (!$timeFilled) {
 
                     $remainingTime = $time - $walkingAverageTime;
 
-                    echo "<br>/////////////";
-                    echo "<br>Total Time" . $time;
-                    echo "<br>Place Time" . $placeAverageTime;
-                    echo "<br>Walking Time" . $walkingAverageTime;
-                    echo "<br>";
+//                    echo "<br>/////////////";
+//                    echo "<br>Total Time" . $time;
+//                    echo "<br>Place Time" . $placeAverageTime;
+//                    echo "<br>Walking Time" . $walkingAverageTime;
+//                    echo "<br>";
 
                     if ($walkingAverageTime <= $remainingTime) {
                         array_push($jsonArray, $placesArray[$i]);
                         array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude));
                     }
-                    echo "<br>" . $summaryTime . "<br>";
+                   // echo "<br>" . $summaryTime . "<br>";
                 }
             }
         } else {
@@ -168,13 +170,20 @@ while (!$timeFilled) {
     }
 }
 
-
-
+function checkBlackList($place_id) {
+    //echo "<br>checking black list for:" . $place_id . " <br>";
+    for ($i = 0; $i <= $_SESSION["places_blacklist_size"]; $i ++) {
+        if ($place_id == $_SESSION["places_blacklist"][$i]) {
+            //echo "<br><strong>blacklist found:" . $place_id . "</strong><br>";
+            return true;
+        }
+    }
+}
 
 $master_array = array("PlaceObject" => $jsonArray);
-echo "<pre>";
-print_r($master_array);
-echo "</pre>";
-//echo json_encode($master_array);
+//echo "<pre>";
+//print_r($master_array);
+//echo "</pre>";
+echo json_encode($master_array);
 
 
