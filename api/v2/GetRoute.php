@@ -19,14 +19,19 @@ $lat = "53.984883";
 echo "<br>currentLat: " . $lat;
 $lng = "-6.393903";
 echo "<br>currentLng: " . $lng;
-$pref1 = "Art_Culture";
+$pref1 = "Food";
 echo "<br>pref1: " . $pref1;
 $pref2 = "History";
 echo "<br>pref2: " . $pref2;
 $pref3 = "Entertainment";
 echo "<br>pref3: " . $pref3;
-$time = 120;
+$time = 60;
 echo "<br>Time: " . $time . " mins";
+
+
+
+
+
 
 
 //File Includes
@@ -34,6 +39,7 @@ include_once '../Credentials.php';
 include_once '../Place.php';
 include_once '../Categories.php';
 include_once './GetTime.php';
+include_once '../Blacklist.php';
 
 
 
@@ -78,46 +84,45 @@ $estimatedTotalTime = 0 + $initialTime;
 
 $jsonArray = array();
 
-function cmp($a, $b){
+function cmp($a, $b) {
     return strcmp($b->rating, $a->rating);
 }
 
 //usort($placesArray, "cmp");
-
-
- //working on time here
- //need to set starting location
- //get disctance to first activity
- //add activity & transit time up
- //go through placesArray and add to new list if time to travelX & complete + time of previous is less than user given time
- //to get travelX use the location of the previous activty and the next activity in list
- //if time is to great skip this activity until you find one that adds up to less < user given time
+//working on time here
+//need to set starting location
+//get disctance to first activity
+//add activity & transit time up
+//go through placesArray and add to new list if time to travelX & complete + time of previous is less than user given time
+//to get travelX use the location of the previous activty and the next activity in list
+//if time is to great skip this activity until you find one that adds up to less < user given time
 
 
 $foodCount = 0;
 while (!$timeFilled) {
-      
 
-$travelMode = "Walking";
 
-        //current time of all activities and transport is 0 minutes
-        $summaryTime = 0;
-        
+    $travelMode = "Walking";
 
-        //iterate through places array and filter to return to client
-        for ($i = 0; $i < count($placesArray); $i ++) {
-            
-            //while the total time is not longer than the user given time
-            if($summaryTime < $time){
-                    
-                    //count number of food activities as they are added
-                    if($placesArray[$i]->place_type == "restauraunt" || $placesArray[$i]->place_type  == "cafe"){
-                        $foodCount ++;
+    //current time of all activities and transport is 0 minutes
+    $summaryTime = 0;
 
-                    }
-                    
-                    
-                    if ($foodCount == 1) {
+
+    //iterate through places array and filter to return to client
+    for ($i = 0; $i < count($placesArray) - 1; $i ++) {
+
+        //while the total time is not longer than the user given time
+        if ($summaryTime < $time) {
+
+
+            if (!$placesArray[$i]->place_id == $_SESSION["places_blacklist"][0]) {
+                //count number of food activities as they are added
+
+                if ($placesArray[$i]->place_type == "restaurant" || $placesArray[$i]->place_type == "cafe") {
+
+                    if ($foodCount < 1) {
+                        $foodCount++;
+
                         $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude);
                         $placeAverageTime = $placesArray[$i]->average_time;
 
@@ -127,56 +132,49 @@ $travelMode = "Walking";
                         $tempTime = $walkingAverageTime + $placeAverageTime;
                         $summaryTime = $tempTime + $summaryTime;
                     }
+                } else {
 
 
 
+                    // get time to next place
+                    // if time to next place <= remaining time
+                    // then go ahead and add it
+                    // 
+                    // 
+                    $placeAverageTime = $placesArray[$i]->average_time;
+                    $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude);
+
+                    $tempTime = $walkingAverageTime + $placeAverageTime;
+                    $summaryTime = $tempTime + $summaryTime;
+
+                    $remainingTime = $time - $walkingAverageTime;
+
+                    echo "<br>/////////////";
+                    echo "<br>Total Time" . $time;
+                    echo "<br>Place Time" . $placeAverageTime;
+                    echo "<br>Walking Time" . $walkingAverageTime;
+                    echo "<br>";
+
+                    if ($walkingAverageTime <= $remainingTime) {
+                        array_push($jsonArray, $placesArray[$i]);
+                        array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude));
+                    }
+                    echo "<br>" . $summaryTime . "<br>";
+                }
             }
-            else{
-                  $timeFilled = true;
-                  
-            }
-
+        } else {
+            $timeFilled = true;
         }
-        echo $summaryTime;
-
-}
-
-checkTimeOverlap($summaryTime, $time);
-
-
-
-
-function checkTimeOverlap($calculatedTime, $userGivenTime) {
-    if ($calculatedTime > $userGivenTime) {
-        echo "\n<strong>WARNING</strong> - Time is overlapping by: ";
-        echo $calculatedTime - $userGivenTime . "\n";
-    } else {
-        echo "\nTime is OK\n";
     }
 }
 
-function calculateTimeBetweenActivity(){
-    
-    
-}
-
-
-array_pop($jsonArray);
-
-checkTimeOverlap($summaryTime, $time);
-
-echo "<br>food places" . $foodCount;
 
 
 
-
-
-
-
-
-
-$master_array = array("PlaceObject"=>$jsonArray);
-echo "<pre>";  print_r($master_array); echo "</pre>";
+$master_array = array("PlaceObject" => $jsonArray);
+echo "<pre>";
+print_r($master_array);
+echo "</pre>";
 //echo json_encode($master_array);
 
 
