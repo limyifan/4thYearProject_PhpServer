@@ -11,7 +11,7 @@ function getDistanceLatLng(&$lat1, &$lng1, &$lat2, &$lng2){
     //mode of transport hard coded to walking in request
     //api hard coded to reuqest 
     
-        $URL = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $lat1 . "," . $lng1 .  "&destination=" . $lat2 . "," . $lng2 . "&mode=walking&key=" . $_SESSION["PLACES_API_KEY"];
+      $URL = "https://maps.googleapis.com/maps/api/directions/json?origin=" . $lat1 . "," . $lng1 .  "&destination=" . $lat2 . "," . $lng2 . "&mode=walking&key=" . $_SESSION["PLACES_API_KEY"];
     
     
     $APIresult = file_get_contents($URL);
