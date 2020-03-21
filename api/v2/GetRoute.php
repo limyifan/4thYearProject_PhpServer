@@ -173,10 +173,8 @@ while ($timeFilled != 1) {
 }
 
 function checkBlackList($place_id) {
-    //echo "<br>checking black list for:" . $place_id . " <br>";
     for ($i = 0; $i <= $_SESSION["places_blacklist_size"]; $i ++) {
         if ($place_id == $_SESSION["places_blacklist"][$i]) {
-            //echo "<br><strong>blacklist found:" . $place_id . "</strong><br>";
             return true;
         }
     }
