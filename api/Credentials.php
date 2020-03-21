@@ -8,7 +8,7 @@
 
 
 //Google Places API
-$_SESSION["PLACES_API_KEY"]= "AIzaSyCh41NjrZVNYxt5x62qXhVoDZBabCdWnhY";
+$_SESSION["PLACES_API_KEY"]= "AIzaSyBWybtApBsH98-1jOht7uh82w_2pJW1vKw";
 
 
 

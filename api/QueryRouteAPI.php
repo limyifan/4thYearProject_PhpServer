@@ -54,7 +54,7 @@ function getDistancePlaceID($origin_id, $destination_id){
             stringToInt($time);
         }  
         else{
-            echo "No Time";
+            //echo "No Time";
         }
     
     }

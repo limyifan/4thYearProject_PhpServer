@@ -35,6 +35,7 @@ for($i = 0; $i < count($fieldTypesForAPI); $i++){
         $APIresult = file_get_contents($URL);
 
         parseAPIResult($placesArray,$APIresult);
+
         //echo "<pre>";  print_r($APIresult); echo "</pre>";
 }
 
@@ -152,10 +153,12 @@ function parseAPIResult(&$placesArray, &$api_result){
                //skip place 
             }
             else{
+                
                 $Place_Object = new Place($place_id, $place_name,$place_type, $rating, $latitude, $longitude,  $icon, $open, $cover_image,$average_time);
                 $Place_Object->setCoverImage($cover_image);
                 $Place_Object->setAverageTime($average_time);
                 array_push($placesArray,$Place_Object);
+                
             }
             
         }
