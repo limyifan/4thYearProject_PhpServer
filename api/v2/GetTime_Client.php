@@ -44,17 +44,12 @@ class travel{
 
 
 
-$walkingTime = findWalkingTime($originLat, $originLng, $destinationLat, $destinationLng). " mins";
-    
-    
-function findWalkingTime(&$originLat, &$originLng, &$destinationLat, &$destinationLng){
-    
-    return getDistanceLatLng($originLat, $originLng, $destinationLat, $destinationLng);
-    
-}
+$walkingTime = getDistanceLatLng($originLat, $originLng, $destinationLat, $destinationLng). "mins";
     
 
-
-
+$travelObject = new travel($originLat,$originLng,$travelMode, $walkingTime, $destinationLat, $destinationLng);
     
 
+$master_array = array("TravelObject"=>$travelObject);
+//echo "<pre>";  print_r($master_array); echo "</pre>";
+echo json_encode($master_array);

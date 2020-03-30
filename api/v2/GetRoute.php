@@ -122,7 +122,7 @@ for($i = 0; $i < count($jsonArray) - 1; $i ++){
         array_push($masterArray, $jsonArray[$i]);        
     }
     else{
-
+        
     }
     
 }
@@ -130,13 +130,13 @@ for($i = 0; $i < count($jsonArray) - 1; $i ++){
 
 
 
-echo $summaryTime;
+
 
 
 
 $arrayObjectTitle = "PlaceObject";
-//returnJsonToClient($arrayObjectTitle, $jsonArray);
+returnJsonToClient($arrayObjectTitle, $masterArray);
 
-outputJsonTidy($masterArray);
+
 
 
