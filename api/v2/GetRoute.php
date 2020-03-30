@@ -15,9 +15,9 @@
 //$time =  htmlspecialchars($_GET["time"]);
 //!!Uncomment the following code for testing on locally.
 //Testing Data - DKIT
-$lat = "53.984883";
+$lat = "54.003402";
 echo "<br>currentLat: " . $lat;
-$lng = "-6.393903";
+$lng = "-6.403153";
 echo "<br>currentLng: " . $lng;
 $pref1 = "Food";
 echo "<br>pref1: " . $pref1;
@@ -39,7 +39,7 @@ include_once './v2_handler.php';
 include_once '../Credentials.php';
 include_once '../Place.php';
 include_once '../Categories.php';
-//include_once './GetTime.php';
+include_once './GetTime.php';
 include_once '../Blacklist.php';
 
 
@@ -67,22 +67,6 @@ $food = false;
 
 
 
-
-include '../QueryRouteAPI.php';
-
-
-
-
-$firstLocationLat = $placesArray[0]->latitude;
-$firstLocationLng = $placesArray[0]->longitude;
-
-
-$initialTime = getDistanceLatLng($lat, $lng, $firstLocationLat, $firstLocationLng);
-
-
-$estimatedTotalTime = 0 + $initialTime;
-
-
 $jsonArray = array();
 
 function cmp($a, $b) {
@@ -93,94 +77,66 @@ function cmp($a, $b) {
 
 $foodActivityCount = 0;
 
-
-
-
-    $travelMode = "Walking";
-
-    $summaryTime = 0;
-
-
     for ($i = 0; $i < count($placesArray) - 1; $i ++) {
 
-        echo "<br>food count" . $foodActivityCount;
-        
-            if (!onBlackList($placesArray[$i]->place_id)) {
-                
-                if(!checkFoodActivityExists($foodActivityCount)){
-                    
-                    if(checkIsFoodActivity($placesArray[$i]->place_type)){
-                        addFoodActivity($placesArray, $i, $jsonArray);
-                        $foodActivityCount ++;
+
+
+        if (!onBlackList($placesArray[$i]->place_id)) {
+
+            if (!checkFoodActivityExists($foodActivityCount)) {
+
+                if (checkIsFoodActivity($placesArray[$i]->place_type)) {
+                    addFoodActivity($placesArray, $i, $jsonArray);
+                    $foodActivityCount ++;
+                }
+            } else {
+
+                if (!checkIsFoodActivity($placesArray[$i]->place_type)) {
+                    if(!onBlackList($placesArray[$i]->place_id)){
+                        addActivity($placesArray, $i, $jsonArray);
                     }
                     
                 }
-                else{
-                    echo "<br>adding otehr type";
-                }
-
-
-                
-                
-                
-                
-
-//                if ($placesArray[$i]->place_type == "restaurant" || $placesArray[$i]->place_type == "cafe" || $placesArray[$i]->place_type == "meal_delivery") {
-//
-//                    if ($foodCount < 1) {
-//                        $foodCount++;
-//
-//                        $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude);
-//                        $placeAverageTime = $placesArray[$i]->average_time;
-//
-//                        array_push($jsonArray, $placesArray[$i]);
-//                        array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude));
-//
-//                        $tempTime = $walkingAverageTime + $placeAverageTime;
-//                        $summaryTime = $tempTime + $summaryTime;
-//                    }
-//                } else {
-//
-//
-//                    $placeAverageTime = $placesArray[$i]->average_time;
-//                    $walkingAverageTime = getDistanceLatLng($placesArray[$i]->latitude, $placesArray[$i]->longitude, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude);
-//
-//                    $tempTime = $walkingAverageTime + $placeAverageTime;
-//                    $summaryTime = $tempTime + $summaryTime;
-//
-//                    $remainingTime = $time - $walkingAverageTime;
-//
-//                    echo "<br>/////////////";
-//                    echo "<br>Total Time" . $time;
-//                    echo "<br>Place Time" . $placeAverageTime;
-//                    echo "<br>Walking Time" . $walkingAverageTime;
-//                    echo "<br>";
-//
-//                    //if ($walkingAverageTime <= $remainingTime) {
-//                        array_push($jsonArray, $placesArray[$i]);
-//                        //array_push($jsonArray, createTravelObject($placesArray[$i]->latitude, $placesArray[$i]->longitude, $travelMode, $placesArray[$i + 1]->latitude, $placesArray[$i + 1]->longitude));
-//                    //}
-//                   // echo "<br>" . $summaryTime . "<br>";
-//                }
             }
-        //}
-         else {
-            //echo "Cant create Object";
+
         }
+    
     }
 
 
+$masterArray = array();
+
+$summaryTime = 0;
+
+for($i = 0; $i < count($jsonArray) - 1; $i ++){
+    
+    $walkingTime =  findWalkingTime($jsonArray[$i]->latitude,$jsonArray[$i]->longitude,$jsonArray[$i + 1]->latitude,$jsonArray[$i + 1]->longitude);
+    $activityTime = $jsonArray[$i]->average_time;
+    
+    $tempTime = $activityTime + $walkingTime;
+    
+    
+    $summaryTime = $tempTime + $summaryTime;
+    
+    if($summaryTime < $time){
+        array_push($masterArray, $jsonArray[$i]);        
+    }
+    else{
+
+    }
+    
+}
 
 
 
 
-
+echo $summaryTime;
 
 
 
 $arrayObjectTitle = "PlaceObject";
 //returnJsonToClient($arrayObjectTitle, $jsonArray);
 
-outputJsonTidy($jsonArray);
+outputJsonTidy($masterArray);
 
 

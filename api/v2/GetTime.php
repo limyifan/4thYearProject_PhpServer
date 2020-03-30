@@ -6,17 +6,18 @@
  * and open the template in the editor.
  */
 
-$originLat =  htmlspecialchars($_GET["originLat"]);
-$originLng =  htmlspecialchars($_GET["originLng"]);
-$destinationLat =  htmlspecialchars($_GET["destinationLat"]);
-$destinationLng =  htmlspecialchars($_GET["destinationLng"]);
+//$originLat =  htmlspecialchars($_GET["originLat"]);
+//$originLng =  htmlspecialchars($_GET["originLng"]);
+//$destinationLat =  htmlspecialchars($_GET["destinationLat"]);
+//$destinationLng =  htmlspecialchars($_GET["destinationLng"]);
 
-require_once '../QueryRouteAPI.php';
+include_once  '../QueryRouteAPI.php';
 
-//$originLat = "54.0045042";
-//$originLng = "-6.3979302";
-//$destinationLat = "54.0045329";
-//$destinationLng = "-6.4013169";
+
+$originLat = "54.0045042";
+$originLng = "-6.3979302";
+$destinationLat = "54.0045329";
+$destinationLng = "-6.4013169";
 
 
 
@@ -43,12 +44,20 @@ class travel{
 
 
 
-    $walkingTime = getDistanceLatLng($originLat, $originLng, $destinationLat, $destinationLng). " mins";
+$walkingTime = findWalkingTime($originLat, $originLng, $destinationLat, $destinationLng). " mins";
     
     
-    $travelObject = new travel($originLat,$originLng,$travelMode, $walkingTime, $destinationLat, $destinationLng);
+function findWalkingTime(&$originLat, &$originLng, &$destinationLat, &$destinationLng){
+    
+    return getDistanceLatLng($originLat, $originLng, $destinationLat, $destinationLng);
+    
+}
+    
+
+
+$travelObject = new travel($originLat,$originLng,$travelMode, $walkingTime, $destinationLat, $destinationLng);
     
 
 $master_array = array("TravelObject"=>$travelObject);
 //echo "<pre>";  print_r($master_array); echo "</pre>";
-echo json_encode($master_array);
+//echo json_encode($master_array);

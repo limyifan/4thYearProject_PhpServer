@@ -6,10 +6,15 @@
  * and open the template in the editor.
  */
 
+function addActivity(&$placesArray, &$arrayIndex, &$jsonArray){
+    
+    array_push($jsonArray, $placesArray[$arrayIndex]);
+    
+}
+
 
 function addFoodActivity(&$placesArray, &$arrayIndex, &$jsonArray) {
 
-    //print_r($placesArray[$arrayIndex]);
     array_push($jsonArray, $placesArray[$arrayIndex]);
 
 }
