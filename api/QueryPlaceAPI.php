@@ -50,7 +50,7 @@ function parseAPIResult(&$placesArray, &$api_result){
      
           
       
-        for($i = 0; $i < 4; $i++){     
+        for($i = 0; $i < 6; $i++){     
 
             //Validating JSON Object to ensure all fields are present.
             
@@ -132,22 +132,23 @@ function parseAPIResult(&$placesArray, &$api_result){
                 $cover_image =  "No Photos Provided";
             }
             
+            $open = "Open";
             
-            if (!empty($json_data['results'][$i]["opening_hours"]))
-            {
-                
-                if(!empty($json_data['results'][$i]["opening_hours"]["open_now"])){
-                    $open = "Open";
-                }
-                else{
-                    $open = "Closed";
-                }
-            }  
-            else{
-                $open = "No Hours Provided";
-            }
+//            if (!empty($json_data['results'][$i]["opening_hours"]))
+//            {
+//                
+//                if(!empty($json_data['results'][$i]["opening_hours"]["open_now"])){
+//                    $open = "Open";
+//                }
+//                else{
+//                    $open = "Closed";
+//                }
+//            }  
+//            else{
+//                $open = "No Hours Provided";
+//            }
             
-            $average_time = 30;
+            $average_time = 20;
             
             if($place_id == "null"){
                //skip place 

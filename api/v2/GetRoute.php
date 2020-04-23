@@ -15,9 +15,9 @@
 //$time =  htmlspecialchars($_GET["time"]);
 //!!Uncomment the following code for testing on locally.
 //Testing Data - DKIT
-$lat = "54.003402";
+$lat = "53.997945";
 echo "<br>currentLat: " . $lat;
-$lng = "-6.403153";
+$lng = "-6.4059567";
 echo "<br>currentLng: " . $lng;
 $pref1 = "Food";
 echo "<br>pref1: " . $pref1;
@@ -25,7 +25,7 @@ $pref2 = "History";
 echo "<br>pref2: " . $pref2;
 $pref3 = "Entertainment";
 echo "<br>pref3: " . $pref3;
-$time = 120;
+$time = 240;
 echo "<br>Time: " . $time . " mins";
 
 
@@ -61,7 +61,7 @@ assignCategory($pref1, $pref2, $pref3, $fieldTypes);
 $placesArray = array();
 include '../QueryPlaceAPI.php';
 
-
+outputJsonTidy($placesArray);
 
 $food = false;
 
@@ -74,36 +74,51 @@ function cmp($a, $b) {
 }
 
 
-
 $foodActivityCount = 0;
 
     for ($i = 0; $i < count($placesArray) - 1; $i ++) {
-
-
-
+     
+      
+        
         if (!onBlackList($placesArray[$i]->place_id)) {
 
             if (!checkFoodActivityExists($foodActivityCount)) {
-
+                
                 if (checkIsFoodActivity($placesArray[$i]->place_type)) {
-                    addFoodActivity($placesArray, $i, $jsonArray);
                     $foodActivityCount ++;
+                    addFoodActivity($placesArray, $i, $jsonArray);
+                    echo "added food<br>"; 
                 }
-            } else {
-
-                if (!checkIsFoodActivity($placesArray[$i]->place_type)) {
-                    if(!onBlackList($placesArray[$i]->place_id)){
-                        addActivity($placesArray, $i, $jsonArray);
-                    }
+            }
+//            } else{
+//                
+//                if (!checkIsFoodActivity($placesArray[$i]->place_type)) {
+//                    
+//                    addActivity($placesArray, $i, $jsonArray);
+//                   echo "added alterntaive<br>";
+//                }
+//            }
+            
+            else if ($foodActivityCount >= 1 && $placesArray[$i]->place_type != "cafe" || $placesArray[$i]->place_type != "restaurant" || $placesArray[$i]->place_type != "meal_takeaway" ) {
+                
+   
+                   addActivity($placesArray, $i, $jsonArray);
+                   echo "added alterntaive<br>";
                     
-                }
+                
             }
 
         }
+        
     
     }
+    
 
 
+
+
+
+    
 $masterArray = array();
 
 $summaryTime = 0;
@@ -136,6 +151,8 @@ for($i = 0; $i < count($jsonArray) - 1; $i ++){
 
 $arrayObjectTitle = "PlaceObject";
 returnJsonToClient($arrayObjectTitle, $masterArray);
+
+
 
 
 

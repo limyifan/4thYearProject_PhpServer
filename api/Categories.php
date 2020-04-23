@@ -13,7 +13,7 @@ function assignCategory(&$preference1, &$preference2, &$preference3, &$fieldType
     foreach($preferences as $pref){
         if($pref == "Food")
             {
-            $foodArray = array("Food" => array("cafe","restaurant"));
+            $foodArray = array("Food" => array("cafe"));
             array_push($fieldTypes, $foodArray);
         }
         else if($pref == "History")

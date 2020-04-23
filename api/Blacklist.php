@@ -13,6 +13,8 @@ array_push($_SESSION["places_blacklist"], "ChIJGxOS5BLMYEgRPjdC4aCGxas");
 array_push($_SESSION["places_blacklist"], "ChIJkUlttjrMYEgReOVZomEXia0");
 array_push($_SESSION["places_blacklist"], "ChIJoaZWKYvPYEgRJ8l15pWP0sk");
 array_push($_SESSION["places_blacklist"], "ChIJ_XmAc6fOYEgRF2an_80HnRs");
+array_push($_SESSION["places_blacklist"], "ChIJD4CyiKfOYEgRdevfIe1Zu4s");
+array_push($_SESSION["places_blacklist"], "ChIJkwrWMgPMYEgRM1N6UGmMMl0");
 
 
 
