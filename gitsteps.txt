@@ -1,0 +1,11 @@
+When working on Code in netbeans.
+
+Make sure working on correct branch.
+Finish your work and commit.
+Push to Cormac repo  dev.2x on github.
+Checkout master branch and merge with dev2.x.
+Master now has uptodate code.
+
+Log onto Tripit VPS
+Go to htdocs
+pull from origin master - this pulls code from cormac repo to local repo on vps
